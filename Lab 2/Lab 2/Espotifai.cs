@@ -8,7 +8,8 @@ namespace Lab_2
 {
     class Espotifai
     {
-        List<Cancion> songs = new List<Cancion>();
+        private List<Cancion> songs = new List<Cancion>();
+        private List<Playlist> guardadas = new List<Playlist>();
 
         public Espotifai()
         {
@@ -124,6 +125,106 @@ namespace Lab_2
                 Console.WriteLine("LO LAMENTO PERO ESE CRITERIO NO EXISTE: " + criterio);
                 return (entregar);
             }
+
+        }
+        public bool GenerarPlaylist(string criterio,string valor,string Name)
+        {
+            List<Cancion> orden = CancionesPorCriterio(criterio, valor);
+            int suma = 0;
+            for (int c = 0; c < guardadas.Count(); c++)
+            {
+                if (Name == guardadas[c].NamePlaylist())
+                {
+                    suma++;
+                }
+                else
+                {
+                    continue;
+
+                }
+            }
+            if (orden.Count() == 0 && criterio != "NOMBRE" && criterio != "nombre" && criterio != "ALBUM" && criterio != "album" && criterio != "ARTISTA" && criterio != "artista" && criterio != "GENERO" && criterio != "genero")
+            {
+                return false;
+            }
+            else if (orden.Count() == 0)
+            {
+                Console.WriteLine("LO LAMENTO NO ENCONTRE CANCIONES QUE CUMPLAN ESTE CRITERIO");
+                return false;
+            }
+            else if (suma != 0)
+            {
+                Console.WriteLine("UPS YA EXISTE UNA PLAYLIST CON ESTE NOMBRE :/");
+                return false;
+            }
+            else
+            {
+                guardadas.Add(new Playlist(Name, orden));
+                return true;
+            }
+
+        }
+        public string VerMisPlaylists()
+        {
+            string entrega = "";
+            if (guardadas.Count() == 0)
+            {
+                return "";
+            }
+            else
+            {
+                for(int n = 0; n < guardadas.Count(); n++)
+                {
+                    string Name = guardadas[n].NamePlaylist();
+                    string data = "";
+                    List<Cancion> canciones = guardadas[n].ReturnSongs();
+                    for (int i = 0; i < canciones.Count(); i++)
+                    {
+                        data += canciones[i].Informacion() + Environment.NewLine;
+                    }
+                    entrega += Name + ":" + Environment.NewLine + data;
+
+
+
+
+
+
+
+
+                }
+                return entrega;
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

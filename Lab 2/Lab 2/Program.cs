@@ -22,6 +22,8 @@ namespace Lab_2
                 Console.WriteLine("1. VER TODAS LAS CANCIONES: ");
                 Console.WriteLine("2. AGREGAR UNA CANCION: ");
                 Console.WriteLine("3. VER CANCIONES POR CRITERIO: ");
+                Console.WriteLine("4. GENERAR PLAYLIST: ");
+                Console.WriteLine("5. VER MIS PLAYLIST: ");
                 Console.WriteLine("E. SALIR DEL PROGRAMA: ");
                 string choice = Console.ReadLine();
 
@@ -54,6 +56,29 @@ namespace Lab_2
                     }
 
                 }
+                else if (choice == "4")
+                {
+                    Console.WriteLine("INGRESE SU CRITERIO, VALOR Y NOMBRE DE TU PLAYLIST");
+                    string criterioplaylist = Console.ReadLine();
+                    string valorcriterio = Console.ReadLine();
+                    string nombreplaylist = Console.ReadLine();
+                    Console.WriteLine(esp.GenerarPlaylist(criterioplaylist, valorcriterio, nombreplaylist));
+
+                }
+                else if (choice == "5")
+                {
+                    if (esp.VerMisPlaylists() == "")
+                    {
+                        Console.WriteLine("LO LAMENTO PERO TU NO TIENES PLAYLIST");
+                    }
+                    else
+                    {
+                        Console.WriteLine("BIENVENIDO A TUS PLAYLIST:");
+                        Console.WriteLine("");
+                        Console.WriteLine(esp.VerMisPlaylists());
+                    }
+                }
+
                 else if (choice == "E" || choice == "e")
                 {
                     Console.WriteLine("QUE LASTIMA PERO ADIOS ME DESPIDO DE TI Y ME VOY :/");
