@@ -50,5 +50,80 @@ namespace Lab_2
                 Console.WriteLine(songs[y].Informacion());
             }
         }
+
+        public List<Cancion> CancionesPorCriterio(string criterio, string valor)
+        {
+            List<Cancion> entregar = new List<Cancion>();
+
+            if (criterio == "NOMBRE" || criterio == "nombre")
+            {
+                for (int z = 0; z < songs.Count(); z++)
+                {
+                    List<string> Crit = songs[z].Criterios();
+                    if (Crit[0] == valor)
+                    {
+                        entregar.Add(songs[z]);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return (entregar);
+            }
+            else if (criterio == "ARTISTA" || criterio == "artista")
+            {
+                for (int z = 0; z < songs.Count(); z++)
+                {
+                    List<string> Crit = songs[z].Criterios();
+                    if (Crit[1] == valor)
+                    {
+                        entregar.Add(songs[z]);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return (entregar);
+            }
+            else if (criterio == "GENERO" || criterio == "genero")
+            {
+                for (int z = 0; z < songs.Count(); z++)
+                {
+                    List<string> Crit = songs[z].Criterios();
+                    if (Crit[2] == valor)
+                    {
+                        entregar.Add(songs[z]);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return (entregar);
+            }
+            else if (criterio == "ALBUM" || criterio == "album")
+            {
+                for (int z = 0; z < songs.Count(); z++)
+                {
+                    List<string> Crit = songs[z].Criterios();
+                    if (Crit[3] == valor)
+                    {
+                        entregar.Add(songs[z]);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return (entregar);
+            }
+            else
+            {
+                Console.WriteLine("LO LAMENTO PERO ESE CRITERIO NO EXISTE: " + criterio);
+                return (entregar);
+            }
+        }
     }
 }

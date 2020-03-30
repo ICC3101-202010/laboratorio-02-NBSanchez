@@ -21,6 +21,7 @@ namespace Lab_2
                 Console.WriteLine("");
                 Console.WriteLine("1. VER TODAS LAS CANCIONES: ");
                 Console.WriteLine("2. AGREGAR UNA CANCION: ");
+                Console.WriteLine("3. VER CANCIONES POR CRITERIO: ");
                 Console.WriteLine("E. SALIR DEL PROGRAMA: ");
                 string choice = Console.ReadLine();
 
@@ -39,6 +40,19 @@ namespace Lab_2
                     string Genero = Console.ReadLine();
                     Console.WriteLine(esp.AgregarCancion(new Cancion(Nombre, Album, Artista, Genero)));
                     Console.WriteLine("");
+                }
+                else if (choice == "3")
+                {
+                    Console.WriteLine("INGRESE EL CRITERIO (NOMBRE,ARTISTA,ALBUM,GENERO): ");
+                    string Crit = Console.ReadLine();
+                    Console.WriteLine("INGRESE SU BUSQUEDA: ");
+                    string valor = Console.ReadLine();
+                    List<Cancion> seleccion = esp.CancionesPorCriterio(Crit, valor);
+                    for (int a = 0; a < seleccion.Count(); a++)
+                    {
+                        Console.WriteLine(seleccion[a].Informacion());
+                    }
+
                 }
                 else if (choice == "E" || choice == "e")
                 {

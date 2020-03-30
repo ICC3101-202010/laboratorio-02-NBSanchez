@@ -24,5 +24,14 @@ namespace Lab_2
         {
             return ("Genero: " + Genero + " Artista: " + Artista + " Album: " + Album + " Nombre: " + Nombre); 
         }
+        public List<string> Criterios()
+        {
+            List<string> criterios = new List<string>();
+            criterios.Add(Nombre);
+            criterios.Add(Artista);
+            criterios.Add(Genero);
+            criterios.Add(Album);
+            return criterios;
+        }
     }
 }
